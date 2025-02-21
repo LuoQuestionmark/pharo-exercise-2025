@@ -1,3 +1,6 @@
+"
+Class EarthMap, this class is part of the exercise on ""country flag"" of Pharo.
+"
 Class {
 	#name : 'EarthMap',
 	#superclass : 'Object',
