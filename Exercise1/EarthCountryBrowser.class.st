@@ -8,7 +8,6 @@ Class {
 		'countryList',
 		'countryCode',
 		'countryFlag',
-		'flagLayout'
 	],
 	#category : 'Exercise1',
 	#package : 'Exercise1'
@@ -17,8 +16,8 @@ Class {
 { #category : 'initialization' }
 EarthCountryBrowser >> connectPresenters [
 
-countryList whenSelectedItemChangedDo: [ 
-	:item | self onCountrySelected: item	
+countryList whenSelectedItemChangedDo: [
+	:item | self onCountrySelected: item
 ].
 ]
 
@@ -31,7 +30,6 @@ EarthCountryBrowser >> defaultLayout [
 		)
 		height: self class toolbarHeight;
 		add: countryFlag height: 350;
-		add: flagLayout height: 350;
 		yourself
 ]
 
@@ -41,7 +39,7 @@ EarthCountryBrowser >> flagForCountryCode: aString [
 | request pngArray |
 request := ZnClient new.
 request get: 'https://flagcdn.com/w320/', aString asLowercase, '.png'.
-request isSuccess ifTrue: [ 
+request isSuccess ifTrue: [
 	pngArray := request response contents.
 	^ ImageReadWriter formFromStream: (ReadStream on: pngArray)
 	].
@@ -50,7 +48,7 @@ request isSuccess ifTrue: [
 ]
 
 { #category : 'initialization' }
-EarthCountryBrowser >> initializePresenters [ 
+EarthCountryBrowser >> initializePresenters [
 	super initializePresenters.
 
 	countryList := self newDropList.
@@ -61,8 +59,6 @@ EarthCountryBrowser >> initializePresenters [
 	countryCode editable: false.
 	countryCode text: ' -- '.
 	countryFlag := self newImage.
-
-	flagLayout := self newRoassal.
 ]
 
 { #category : 'user interface' }
