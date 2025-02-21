@@ -20,6 +20,11 @@ EarthMapCountry >> asRSShape [
 ]
 
 { #category : 'accessing' }
+EarthMapCountry >> code [
+	^ code
+]
+
+{ #category : 'accessing' }
 EarthMapCountry >> fromXML: aXMLElement [
 	svgPath := aXMLElement attributeAt: 'd'.
 	name := aXMLElement attributeAt: 'title'.
@@ -36,6 +41,11 @@ EarthMapCountry >> inspectorShape [
 	canvas add: self asRSShape.
 	canvas @ RSCanvasController.
 	^ SpRoassalInspectorPresenter new canvas: canvas; yourself
+]
+
+{ #category : 'accessing' }
+EarthMapCountry >> name [
+	^ name
 ]
 
 { #category : 'printing' }

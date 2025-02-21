@@ -11,6 +11,11 @@ Class {
 	#package : 'Exercise1'
 }
 
+{ #category : 'accessing' }
+EarthMap >> countries [
+	^ countries 
+]
+
 { #category : 'parsing' }
 EarthMap >> importCountriesFrom: aFilename [
 	| tree |
