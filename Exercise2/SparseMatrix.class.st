@@ -90,6 +90,8 @@ SparseMatrix >> toMat [
 			] ifFalse: [ 
 				out at: i put: 0.
 			]
+		] ifFalse: [
+			out at:i put: 0.
 		].
 	].
 	

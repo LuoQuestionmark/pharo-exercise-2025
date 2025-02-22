@@ -7,8 +7,7 @@ Class {
 	#instVars : [
 		'countryList',
 		'countryCode',
-		'countryFlag',
-		'flagLayout'
+		'countryFlag'
 	],
 	#category : 'Exercise1',
 	#package : 'Exercise1'
@@ -31,7 +30,6 @@ EarthCountryBrowser >> defaultLayout [
 		)
 		height: self class toolbarHeight;
 		add: countryFlag height: 350;
-		add: flagLayout height: 350;
 		yourself
 ]
 
@@ -61,8 +59,6 @@ EarthCountryBrowser >> initializePresenters [
 	countryCode editable: false.
 	countryCode text: ' -- '.
 	countryFlag := self newImage.
-
-	flagLayout := self newRoassal.
 ]
 
 { #category : 'user interface' }
