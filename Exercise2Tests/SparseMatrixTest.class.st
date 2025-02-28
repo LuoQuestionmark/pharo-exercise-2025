@@ -1,12 +1,12 @@
 Class {
 	#name : 'SparseMatrixTest',
 	#superclass : 'TestCase',
-	#category : 'Exercise2Test',
-	#package : 'Exercise2Test'
+	#category : 'Exercise2Tests',
+	#package : 'Exercise2Tests'
 }
 
 { #category : 'basic tests' }
-SparseMatrixTest >> SparseCreationTests [
+SparseMatrixTest >> testSparseCreation [
 	| m |
 	m := SparseMatrix new.
 	m := m fromMat: #(#(1 2 3 0) #(4 5 6 7) #(7 8 9 10)).
@@ -17,7 +17,7 @@ SparseMatrixTest >> SparseCreationTests [
 ]
 
 { #category : 'basic tests' }
-SparseMatrixTest >> SparseReverseTests [
+SparseMatrixTest >> testSparseReverse [
 	| m m2 m3 |
 	m := SparseMatrix new.
 	m2 := #(#(1 2 3 0) #(4 5 6 7) #(7 8 9 10)).
@@ -27,7 +27,7 @@ SparseMatrixTest >> SparseReverseTests [
 ]
 
 { #category : 'basic tests' }
-SparseMatrixTest >> ZeroElementsTests [
+SparseMatrixTest >> testZeroElements [
 	| m m2 m3 |
 	m := SparseMatrix new.
 	m2 := #(#(0)).
