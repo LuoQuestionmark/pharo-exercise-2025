@@ -17,28 +17,22 @@ Class {
 
 { #category : 'initialization' }
 SparseMatrix >> fromMat: normalMatrix [
-	| x y |
-
-	x := 0. y := 0.
 	xs := OrderedCollection new.
 	ys := OrderedCollection new.
 	vs := OrderedCollection new.
 
-	normalMatrix do: [ :row |
-		y := 0.
-		row do: [ :col |
+	normalMatrix doWithIndex: [ :row :x |
+		row doWithIndex: [:col :y |
 			col ~= 0 ifTrue: [ 
 				xs add: x.
 				ys add: y.
 				vs add: col.
 			].
-			y := y + 1.
 		].
-		x := x + 1.
 	].
 
-	xdim := x.
-	ydim := y.
+	xdim := normalMatrix size.
+	ydim := (normalMatrix at:1) size.
 
 
 ]
@@ -83,7 +77,7 @@ SparseMatrix >> toMat [
 		valIndex <= xs size ifTrue: [
 			x := xs at: valIndex.
 			y := ys at: valIndex.
-			(y + 1) + (x * ydim) = i ifTrue: [ 
+			y + ((x - 1) * ydim) = i ifTrue: [ 
 				v := vs at: valIndex.
 				out at: i put: v.
 				valIndex := valIndex + 1.
