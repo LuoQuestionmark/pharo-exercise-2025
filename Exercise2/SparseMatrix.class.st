@@ -15,31 +15,45 @@ Class {
 	#package : 'Exercise2'
 }
 
-{ #category : 'initialization' }
-SparseMatrix >> fromMat: normalMatrix [
-	xs := OrderedCollection new.
-	ys := OrderedCollection new.
-	vs := OrderedCollection new.
+{ #category : 'instance creation' }
+SparseMatrix class >> basicNew [
+	^ super basicNew initialize.
+]
+
+{ #category : 'instance creation' }
+SparseMatrix class >> fromMat: normalMatrix [
+	| out |
+	out := self basicNew.
 
 	normalMatrix doWithIndex: [ :row :x |
 		row doWithIndex: [:col :y |
-			col ~= 0 ifTrue: [ 
-				xs add: x.
-				ys add: y.
-				vs add: col.
+			col ~= 0 ifTrue: [
+				out xsAdd: x.
+				out ysAdd: y.
+				out vsAdd: col.
 			].
 		].
 	].
 
-	xdim := normalMatrix size.
-	ydim := (normalMatrix at:1) size.
+	out xdim: normalMatrix size.
+	out ydim: (normalMatrix at:1) size.
+	
+	^ out
 
 
+]
+
+{ #category : 'instance creation' }
+SparseMatrix class >> new [
+	self error: 'should not be called'
 ]
 
 { #category : 'initialization' }
 SparseMatrix >> initialize [
 	super initialize.
+	xs := OrderedCollection new.
+	ys := OrderedCollection new.
+	vs := OrderedCollection new.
 ]
 
 { #category : 'converting' }
@@ -92,4 +106,56 @@ SparseMatrix >> toMat [
 	out := self matReshape: out col: ydim row: xdim.
 	
 	^ out
+]
+
+{ #category : 'accessing' }
+SparseMatrix >> vs [
+	^ vs
+]
+
+{ #category : 'setter' }
+SparseMatrix >> vsAdd: value [
+	vs add: value.
+]
+
+{ #category : 'accessing' }
+SparseMatrix >> xdim [
+	^ xdim
+]
+
+{ #category : 'setter' }
+SparseMatrix >> xdim: value [
+	xdim := value
+]
+
+{ #category : 'accessing' }
+SparseMatrix >> xs [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"
+	^ xs
+]
+
+{ #category : 'setter' }
+SparseMatrix >> xsAdd: value [
+	xs add: value.
+]
+
+{ #category : 'accessing' }
+SparseMatrix >> ydim [
+	^ ydim
+]
+
+{ #category : 'setter' }
+SparseMatrix >> ydim: value [
+	ydim := value
+]
+
+{ #category : 'accessing' }
+SparseMatrix >> ys [
+	^ ys
+]
+
+{ #category : 'setter' }
+SparseMatrix >> ysAdd: value [
+	ys add: value
 ]
