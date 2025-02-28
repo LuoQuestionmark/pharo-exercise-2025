@@ -50,14 +50,11 @@ Example of usage:
 
 ```st
 | m m2 m3 |
-m := SparseMatrix new.
 m2 := #(#(1 2 3 0) #(4 5 6 7) #(7 8 9 10)).
-m := m fromMat: m2.
+m := SparseMatrix fromMat: m2.
 m3 := m toMat.
 self assert: m2 equals: m3.
 ```
-
-Notice that the `SparseMatrix` is initialized before calling the `fromMat` method, that is because I could not find a way to get the `initialize` function with parameter work properly.
 
 ### Data structure
 
@@ -80,4 +77,4 @@ The program did it with two steps: firstly it build a "flat" version of the orig
 
 ### Tests
 
-I built three tests in the class `SparseMatrixTest`, to test if the matrix can be converted correctly on both direction. While I can launch them correctly one by one in the playground, I did have some trouble to launch them with the tool `Dr. Test`.
+I built three tests in the class `SparseMatrixTest`, to test if the matrix can be converted correctly on both direction.
